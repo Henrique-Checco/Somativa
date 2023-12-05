@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Somativa.Models.CompraItem>
+
+@{
+    ViewData["Title"] = "Itens da Compra";
+}
+
+<h1>Itens da Compra</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewData["CompraId"]">Criar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Compra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unitario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compra.Nota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unitario)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CompraItemId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CompraItemId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.CompraItemId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
